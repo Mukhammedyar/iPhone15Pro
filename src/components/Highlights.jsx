@@ -25,7 +25,6 @@ export default function Highlights() {
                 </div>
             </div>
             
-              
             <VideoCarousel/>
         </div>
    </section>

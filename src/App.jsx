@@ -2,7 +2,6 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Highlights from './components/Highlights'
-import Button from './components/AnimationButton'
 import Model from './components/Model'
 
 import * as Sentry from '@sentry/react'

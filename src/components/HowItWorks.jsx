@@ -16,7 +16,6 @@ const HowItWorks = () => {
             ease: 'power2.inOut'
         })
     },[])
-
     return (
     <section className='common-padding'>
         <div className="screen-max-width">
