@@ -169,40 +169,37 @@ export default function VideoCarousel() {
         </div>
         <div className="flex-center relative mt-10">
             <AnimationButton
-                className={"flex-center w-0 h-0 bg-gray-300 backdrop-blur rounded-full"}
-                items={".items"}
-                section1={"#hero"}  
-                section2={"#highlights"}
+                className={"flex-center"}
+                item1={".item1"} 
+                item2={".control-btn"} 
+                section={"#highlights"}
                 circleWidth={'60px'}
-                width={"180px"}
-                translateX={"-60px"}
+                longWidth={"60px"}
+                circleHeight={"60px"}
+                innerItem={'.item'}
+                width={"200px"}
                 height={"60px"}
                 >
-                {videoRef.current.map((_, i)=> (
-                    <span key={i} ref={(el) => (videoDivRef.current[i] = el)} className="items mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer">
-                        <span ref={(el) => (videoSpanRef.current[i] = el)} className="absolute h-full w-full rounded-full" />
-                    </span>
-                ))}
+                    <div className="flex-center item1 hidden w-0 h-0 bg-gray-300 backdrop-blur rounded-full">
+                        {videoRef.current.map((_, i)=> (
+                            <span key={i} ref={(el) => (videoDivRef.current[i] = el)} className="item mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer">
+                                <span ref={(el) => (videoSpanRef.current[i] = el)} className="absolute item h-full w-full rounded-full" />
+                            </span>
+                        ))}
+                    </div>
+                    <button
+                        className="control-btn"
+                        onClick={isLastVideo 
+                            ? ()=> handleProcess('video-reset')
+                            : !isPlaying 
+                                ? ()=> handleProcess('play')
+                                : ()=> handleProcess('pause')
+                        
+                        }>
+                        <img className="play-img item" src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg } alt={isLastVideo ? "replay" : !isPlaying ? "play" : "pause"} />
+                    </button>
             </AnimationButton>
-            <AnimationButton
-                section1={"#hero"}  
-                section2={"#highlights"}
-                className={"control-btn"}
-                translateX={"60px"}
-                display={'flex'}
-                items={".play-img"}
-                circleWidth={"60px"}
-                width={"60px"}
-                height={"60px"}
-                onClick={isLastVideo 
-                    ? ()=> handleProcess('video-reset')
-                    : !isPlaying 
-                        ? ()=> handleProcess('play')
-                        : ()=> handleProcess('pause')
-                
-                }>
-                <img className="play-img" src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg } alt={isLastVideo ? "replay" : !isPlaying ? "play" : "pause"} />
-            </AnimationButton>
+              
         </div>
     </>
   )

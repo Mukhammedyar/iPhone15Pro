@@ -101,38 +101,30 @@ const Model = () => {
 
           <div className="mx-auto w-full">
             <p className="text-sm font-light text-center mb-5">{model.title}</p>
-
-            <div className="flex-center">
+            <div className="flex-center relative">
               <AnimationButton
-                section1={'#highlights'}
-                section2={'#model'}
-                items={'.items-model'}
-                circleWidth={"50px"}
-                translateX={"-50px"}
-                width={"200px"}
-                height={"50px"}
-                className={"color-container"}
-              >
-                {models.map((item, i) => (
-                  <li key={i} className="items-model w-6 h-6 rounded-full mx-2 cursor-pointer" style={{ backgroundColor: item.color[0] }} onClick={() => setModel(item)} />
-                ))}
-              </AnimationButton>
-              <AnimationButton
-                section1={'#highlights'}
-                section2={'#model'}
-                className={"size-btn-container hidden"}
-                translateX={"100px"}
-                display={'flex'}
-                items={".size-btn"}
-                circleWidth={"50px"}
-                width={"100px"}
-                height={"50px"}
-              >
-                {sizes.map(({ label, value }) => (
-                    <span key={label} className="size-btn text-center hidden" style={{ backgroundColor: size === value ? 'white' : 'transparent', color: size === value ? 'black' : 'white'}} onClick={() => setSize(value)}>
-                      {label}
-                    </span>
+                className={"flex-center mx-auto"}
+                item1={".color-container"} 
+                item2={".size-btn-container"} 
+                section={"#model"}
+                circleWidth={'50px'}
+                longWidth={"95px"}
+                circleHeight={"50px"}
+                innerItem={'.item'}
+                width={"180px"}
+                height={"50px"}>
+                <ul className="color-container hidden">
+                  {models.map((item, i) => (
+                    <li key={i} className="items-model item w-6 h-6 rounded-full mx-2 cursor-pointer" style={{ backgroundColor: item.color[0] }} onClick={() => setModel(item)} />
                   ))}
+                </ul>
+                <button className="size-btn-container hidden">
+                  {sizes.map(({ label, value }) => (
+                      <span key={label} className="size-btn item text-center" style={{ backgroundColor: size === value ? 'white' : 'transparent', color: size === value ? 'black' : 'white'}} onClick={() => setSize(value)}>
+                        {label}
+                      </span>
+                    ))}
+                </button>
               </AnimationButton>
             </div>
           </div>
